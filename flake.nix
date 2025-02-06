@@ -23,6 +23,13 @@
             })
           ];
         };
+
+        libraries = with pkgs; [
+          xorg.libX11
+          xorg.libXft
+          pkg-config
+          imlib2
+        ];
       in rec {
         apps = {
           st = {
@@ -36,6 +43,7 @@
         defaultPackage = pkgs.st-norpie;
 
         devShell = pkgs.mkShell {
+          nativeBuildInputs = libraries;
           buildInputs = with pkgs; [xorg.libX11 xorg.libXft gcc];
         };
       }
