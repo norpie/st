@@ -19,6 +19,9 @@
               st-norpie = prev.st.overrideAttrs (oldAttrs: rec {
                 version = "master";
                 src = ./.;
+                buildInputs = oldAttrs.buildInputs ++ [
+                  pkgs.imlib2
+                ];
               });
             })
           ];
